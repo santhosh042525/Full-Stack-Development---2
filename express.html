@@ -1,0 +1,125 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('<h1>Home Page</h1><p>Welcome to our site!</p>');
+});
+
+app.get('/about', (req, res) => {
+  res.send('<h1>About Us</h1><p>We love Express.js!</p>');
+});
+
+app.get('/contact', (req, res) => {
+  res.send('<h1>Contact</h1><p>Email us at: hello@example.com</p>');
+});
+
+app.listen(port, () => {
+  console.log(`Website running at http://localhost:${port}`);
+});
+
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send(`
+    <html>
+      <body>
+        <h1>Check your browser console</h1>
+        <script>
+          console.log('Hello World');
+        </script>
+      </body>
+    </html>
+  `);
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+let items = [];
+
+// Create
+app.post('/items', (req, res) => {
+  const item = req.body;
+  items.push(item);
+  res.status(201).send(item);
+});
+
+// Read
+app.get('/items', (req, res) => {
+  res.send(items);
+});
+
+// Update
+app.put('/items/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  items[id] = req.body;
+  res.send(items[id]);
+});
+
+// Delete
+app.delete('/items/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  items.splice(id, 1);
+  res.send({ message: 'Item deleted' });
+});
+
+app.listen(port, () => {
+  console.log(`CRUD API running at http://localhost:${port}`);
+});
+
+
+const express = require('express');
+const mysql = require('mysql');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+// MySQL Connection
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '', // replace with your password
+  database: 'testdb' // replace with your database name
+});
+
+db.connect(err => {
+  if (err) throw err;
+  console.log('Connected to MySQL');
+});
+
+// Sample Route to Fetch Data
+app.get('/users', (req, res) => {
+  db.query('SELECT * FROM users', (err, results) => {
+    if (err) throw err;
+    res.send(results);
+  });
+});
+
+app.listen(port, () => {
+  console.log(`API connected to MySQL at http://localhost:${port}`);
+});
