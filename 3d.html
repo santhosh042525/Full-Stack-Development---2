@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>React Form Example</title>
+  <!-- React and ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <!-- Babel for JSX support -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 500px;
+    }
+    input, button {
+      display: block;
+      margin: 10px 0;
+      padding: 8px;
+      width: 100%;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function ContactForm() {
+      const [name, setName] = useState('');
+      const [email, setEmail] = useState('');
+      const [submitted, setSubmitted] = useState(false);
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setSubmitted(true);
+      };
+
+      return (
+        <div>
+          <h2>Contact Form</h2>
+          <form onSubmit={handleSubmit}>
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+
+            <label>Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <button type="submit">Submit</button>
+          </form>
+
+          {submitted && (
+            <div className="result">
+              <h3>Submitted Data:</h3>
+              <p><strong>Name:</strong> {name}</p>
+              <p><strong>Email:</strong> {email}</p>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<ContactForm />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>React Props Example</title>
+  <!-- React and ReactDOM via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <!-- Babel for JSX support -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      text-align: center;
+    }
+    .card {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 10px auto;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    // Child component that receives props
+    function GreetingCard({ name, message }) {
+      return (
+        <div className="card">
+          <h2>Hello, {name}!</h2>
+          <p>{message}</p>
+        </div>
+      );
+    }
+
+    // Parent component that passes props to child
+    function App() {
+      const userName = "KANHA";
+      const userMessage = "Welcome to the React world!";
+
+      return (
+        <div>
+          <h1>React Props Sharing</h1>
+          <GreetingCard name={userName} message={userMessage} />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Upload React Project to GitHub</title>
+</head>
+<body>
+  <h2>Upload React Project to GitHub</h2>
+  <ol>
+    <li><strong>Create a new React app:</strong><br />
+      <code>npx create-react-app myapp</code>
+    </li>
+    <li><strong>Navigate into project folder:</strong><br />
+      <code>cd myapp</code>
+    </li>
+    <li><strong>Initialize Git repository:</strong><br />
+      <code>git init</code>
+    </li>
+    <li><strong>Add files and commit:</strong><br />
+      <code>git add .</code><br />
+      <code>git commit -m "Initial commit"</code>
+    </li>
+    <li><strong>Connect to GitHub remote:</strong><br />
+      <code>git remote add origin https://github.com/username/myapp.git</code>
+    </li>
+    <li><strong>Push to GitHub:</strong><br />
+      <code>git push -u origin main</code>
+    </li>
+    <li><strong>.gitignore already excludes <code>node_modules</code> by default in React apps.</strong></li>
+    <li><strong>Create feature branches:</strong><br />
+      <code>git checkout -b feature/navbar</code><br />
+      <code>git checkout -b feature/form</code>
+    </li>
+    <li><strong>Merge branches to main:</strong><br />
+      <code>git checkout main</code><br />
+      <code>git merge feature/navbar</code><br />
+      <code>git merge feature/form</code>
+    </li>
+    <li><strong>Practice pull requests:</strong><br />
+      Use GitHub GUI to create pull requests, review changes, and merge.
+    </li>
+  </ol>
+</body>
+</html>
